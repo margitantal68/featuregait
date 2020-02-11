@@ -6,15 +6,15 @@ Code repository of paper:
 ICANN 2020
 
 ## Used datasets
-*[ZJU-GaitAcc] - http://www.ytzhang.net/datasets/zju-gaitacc/
-*[IDNet] - http://signet.dei.unipd.it/research/human-sensing/
+* [ZJU-GaitAcc] - http://www.ytzhang.net/datasets/zju-gaitacc/
+* [IDNet] - http://signet.dei.unipd.it/research/human-sensing/
 
 
 ## Segmentation
 
 See 
-*FRAME-based: length = 128 samples
-*CYCLE-based: gait cycles were normalized to 128 samples
+* FRAME-based: length = 128 samples
+* CYCLE-based: gait cycles were normalized to 128 samples
 
 ## Features
 RAW - use raw accelerometer 
