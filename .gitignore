@@ -2,3 +2,4 @@ __pycache__/
 features/
 handcrafted_features/
 IDNet_interpolated/
+foo.py

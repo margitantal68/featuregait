@@ -1,17 +1,27 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+
 from scipy import stats
 
 from util.load_data import read_recording
 from util.const import FEAT_DIR, ZJU_BASE_FOLDER, SEQUENCE_LENGTH, AUTOENCODER_MODEL_TYPE, FeatureType
 
 
-model_type = AUTOENCODER_MODEL_TYPE.CONV1D
-feature_type = FeatureType.RAW
-filename = ZJU_BASE_FOLDER+'/session_0/subj_001/rec_1/3.txt'
-# cycles.txt
-data = read_recording(filename, model_type, feature_type)
+df = pd.read_csv('signature_length.csv', header = None, delimiter=',')
+data = df.values
 print(data.shape)
+
+plt.hist(data, bins='auto')  
+plt.title("Signature length histogram")
+plt.show()
+
+# model_type = AUTOENCODER_MODEL_TYPE.CONV1D
+# feature_type = FeatureType.RAW
+# filename = ZJU_BASE_FOLDER+'/session_0/subj_001/rec_1/3.txt'
+# # cycles.txt
+# data = read_recording(filename, model_type, feature_type)
+# print(data.shape)
 
 
 # b = np.array([[ 1,  2,  3,  4], [ 10,  20,  30,  40]])

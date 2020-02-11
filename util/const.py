@@ -44,10 +44,10 @@ class FeatureType(Enum):
 
 # There are two types of biometric system
 # IDENTIFICATION: classification, builds an 1:N classifier
-# VERIFICATION: authentication, builds N binary classifiers
+# VERIFICATION: authentication, builds N binary classifiers 
 class BiometricSystemType(Enum):
     IDENTIFICATION = 0
-    VERIFICATION = 1
+    # VERIFICATION = 1
 
 # There are two types of evaluations of a classifier
 # TRAIN_TEST: requires  train and test data with their labels
@@ -72,7 +72,7 @@ class AUTOENCODER_MODEL_TYPE(Enum):
 
 
 class ConvolutionType(Enum):
-    CNN = 0
+    # CNN = 0
     FCN = 1
     TimeCNN = 2
 
@@ -107,14 +107,12 @@ class DATASET(Enum):
 # Type of measurement
 # SAME_DAY: both training and test data are taken from the same session. Our case: session1
 # CROSS_DAY: training data are taken from session2, while testing data are taken from session2
-# MIXED_DAY: both training and test data are taken from session1 and session2 (first half for training and second half for testing)
+# NOT IMPLEMENTED!!!    MIXED_DAY: both training and test data are taken from session1 and session2 (first half for training and second half for testing)
 
 class MEASUREMENT_PROTOCOL(Enum):
     SAME_DAY  = 1
     CROSS_DAY = 2
-    MIXED_DAY = 3
-
-
+    # MIXED_DAY = 3
 
 
 
@@ -123,7 +121,7 @@ seed_value = 0
 RANDOM_STATE = np.random.seed(0)
 RANDOM_STATE_SAMPLE = 1
 
-# Number of steps to drop - used for IDNet
+# Number of steps to drop - used ONLY for IDNet
 DROP_FRAMES = 4
 
 # Constant for 3*gs

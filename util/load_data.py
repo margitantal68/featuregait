@@ -20,7 +20,7 @@ def users_of_a_folder(session):
 # data: numpy array containing the data of the recording
 # returns:
 #   the cycles of the recording as fixed length (SEQUENCE_LENGTH) frames
-# 
+#   the first and the last cycles are ignored  
 def frames_2_cycles( recording_filename, data ):
     # Open cycles.txt and convert cycles to fixed length frames
     cycles_filename =  recording_filename.replace('3.txt', '/cycles.txt')
@@ -31,7 +31,8 @@ def frames_2_cycles( recording_filename, data ):
     # cycles' endpoints
     endpoints = datacycles[ -1]
     
-    frames = list()            
+    frames = list()  
+    num_frames = 0          
     for i in range(0,n-2):
         frame = data[ endpoints[i] : endpoints[i+1], : ]
         num_points = frame.shape[0]
@@ -47,9 +48,7 @@ def frames_2_cycles( recording_filename, data ):
             frames = frame
         else:
             frames = np.concatenate((frames, frame), axis=0)        
-    
-    # data = frames 
-    num_frames = (int) (data.shape[0] / SEQUENCE_LENGTH)
+        num_frames = num_frames + 1
     return frames, num_frames
     
 
@@ -113,7 +112,7 @@ def read_recording(filename, modeltype, featuretype):
 
     # Normalization
     data = data / G3
-    
+
     if featuretype == FeatureType.MANUAL:
         # compute magnitude
         mag = np.sqrt(np.sum(np.power(data, 2), axis=1))
@@ -122,13 +121,17 @@ def read_recording(filename, modeltype, featuretype):
     data = reshape_data(data, num_frames, num_features, modeltype)
     return data
 
+# Reshapes the segments of a recording
 # Reshape types
 # (1) frame: 128 x (x,y,z)  = 384
 # (2) frame: 128 x 3
 
 def reshape_data(data, num_frames, num_features, modeltype):
-    # Throw the first and the last frame
-    if IGNORE_FIRST_AND_LAST_FRAMES == True:
+    # Frame-based segmentation: Throw the first and the last frame
+    # For cycle-based segmentation these cycles are thrown in frames_2_cycles function
+    if CYCLE == False and IGNORE_FIRST_AND_LAST_FRAMES == True:
+        # data = data[2*SEQUENCE_LENGTH : (num_frames-2) * SEQUENCE_LENGTH]
+        # num_frames = num_frames - 4
         data = data[SEQUENCE_LENGTH : (num_frames-1) * SEQUENCE_LENGTH]
         num_frames = num_frames - 2
 

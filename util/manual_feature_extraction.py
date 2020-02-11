@@ -1,5 +1,7 @@
 import numpy as np
 
+
+
 # used for 59 features: 19 + 4 * 10-bin histograms = 59
 NUM_BINS = 10
 
@@ -98,3 +100,18 @@ def feature_extraction(data):
         
    
     return result
+
+# ********************************************
+# Move to main !!!!
+
+# def extract_manual_features():
+#     for session in sessions:
+#         print( session +": "+str(sessions[session]))
+#     modeltype = AUTOENCODER_MODEL_TYPE.NONE
+#     featuretype = modeltype == FeatureType.MANUAL
+#     session0_data = load_recordings_from_session('session_0', 1, 23, 1, 7, modeltype, featuretype)
+#     session0_features = feature_extraction(session0_data)
+#     print(session0_features.shape)
+
+# extract_manual_features()
+# ********************************************

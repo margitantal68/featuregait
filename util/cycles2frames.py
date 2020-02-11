@@ -8,7 +8,7 @@ import sys
 import csv
 
 from csv import writer
-from const import TEMP_DIR,  ZJU_BASE_FOLDER, G3
+from const import FEAT_DIR,  ZJU_BASE_FOLDER, G3
 
 NUM_POINTS = 128
 
@@ -33,7 +33,7 @@ def read_recording(filename):
 # (2) frame: 128 x 3
 
 def convert_cycles_2_frames(basepath, sessiondir, numusers, output_file):
-    csv_file = open(TEMP_DIR+'/'+output_file, mode='w')
+    csv_file = open(FEAT_DIR+'/'+output_file, mode='w+')
     path = basepath + '/' + sessiondir
     print(path)
     # iterate over users
@@ -55,7 +55,7 @@ def convert_cycles_2_frames(basepath, sessiondir, numusers, output_file):
                
                 filename = current+'/rec_'+str(i)+'/3.txt'
                 data = read_recording(filename)
-                print(data.shape)
+                # print(data.shape)
                 for i in range(0,n-2):
                     frame = data[ x[i]:x[i+1],:]
                     num_points = frame.shape[0]
@@ -82,7 +82,8 @@ path = ZJU_BASE_FOLDER
 
 
 # main
+# Run from project root: python util/cycles2frames.py
 
-convert_cycles_2_frames(path, 'session_0',  22, 'zju_session0_cycles_raw_data.csv')
-convert_cycles_2_frames(path, 'session_1',  153, 'zju_session1_cycles_raw_data.csv')
-convert_cycles_2_frames(path, 'session_2',  153, 'zju_session2_cycles_raw_data.csv')
+convert_cycles_2_frames(path, 'session_0',  22, 'session0_cycles_raw_data.csv')
+convert_cycles_2_frames(path, 'session_1',  153, 'session1_cycles_raw_data.csv')
+convert_cycles_2_frames(path, 'session_2',  153, 'session2_cycles_raw_data.csv')

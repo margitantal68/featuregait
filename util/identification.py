@@ -10,11 +10,11 @@ from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 
 from util.load_data import load_recordings_from_session
-from util.const import AUTOENCODER_MODEL_TYPE, RANDOM_STATE, MEASUREMENT_PROTOCOL
+from util.const import AUTOENCODER_MODEL_TYPE, RANDOM_STATE, MEASUREMENT_PROTOCOL, FeatureType
 from util.manual_feature_extraction import feature_extraction
 from util.settings import MEASUREMENT_PROTOCOL_TYPE
 
-
+# 
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Load raw data
@@ -74,7 +74,7 @@ def CV_evaluation(X_data, y_data):
 
 def test_identification_cross_day( filenames ):
     # load CSV files
-    basefolder = 'handcrafted_features/'
+    basefolder = 'features/'
 
     # training
     csvdata = pd.read_csv(basefolder + filenames[ 0 ], header=None)
@@ -110,14 +110,18 @@ def test_identification_cross_day( filenames ):
 # model_type should be AUTOENCODER_MODEL_TYPE.DENSE, feature_type: FeatureType.RAW
 def test_identification_raw_frames_same(model_type, feature_type):
     print('SAME_DAY evaluation')
-    print('session0:')
+    
     X, y = load_session_data('session_0', model_type, feature_type)
+    print('session0:'+str(X.shape))
     CV_evaluation(X, y)
-    print('session1:')
+    
     X, y = load_session_data('session_1', model_type, feature_type)
+    print('session1:'+str(X.shape))
     CV_evaluation(X, y)
-    print('session2:')
+
+    
     X, y = load_session_data('session_2', model_type, feature_type)
+    print('session2:'+str(X.shape))
     CV_evaluation(X, y)
         
     
@@ -128,7 +132,13 @@ def test_identification_raw_frames_same(model_type, feature_type):
 def test_identification_raw_frames_cross(model_type, feature_type):
     print('CROSS_DAY evaluation')
     print('Training: session_1 + Testing: session_2')
-    X_train, y_train, X_test, y_test = load_data( 'session', model_type, feature_type)
+
+    X_train, y_train = load_session_data('session_1',  AUTOENCODER_MODEL_TYPE.DENSE, FeatureType.RAW)
+    X_test, y_test = load_session_data('session_2',  AUTOENCODER_MODEL_TYPE.DENSE, FeatureType.RAW)
+
+    # X_train, y_train = load_recordings_from_session('session_1', 1, 154, 1, 7, AUTOENCODER_MODEL_TYPE.DENSE, FeatureType.RAW)
+    # X_test,  y_test  = load_recordings_from_session('session_2', 1, 154, 1, 7, AUTOENCODER_MODEL_TYPE.DENSE, FeatureType.RAW)
+
     evaluation(X_train, y_train, X_test, y_test)
 
 
@@ -139,8 +149,8 @@ def test_identification_raw_frames_cross(model_type, feature_type):
 # Identification using RAW data with variable length cycles converted to fix length frames
 def test_identification_raw_cycles_same():
     # load CSV files
-    basefolder = 'handcrafted_features/'
-    filenames = ['zju_session0_cycles_raw_data.csv', 'zju_session1_cycles_raw_data.csv', 'zju_session2_cycles_raw_data.csv']
+    basefolder = 'features/'
+    filenames = ['session0_cycles_raw_data.csv', 'session1_cycles_raw_data.csv', 'session2_cycles_raw_data.csv']
 
     for i in range(len(filenames)):
         csvdata = pd.read_csv(basefolder + filenames[ i ], header=None)
@@ -162,7 +172,7 @@ def test_identification_raw_cycles_same():
 # CYCLE-based segmentation
 
 def test_identification_raw_cycles_cross( ):
-    filenames = [ 'zju_session1_cycles_raw_data.csv', 'zju_session2_cycles_raw_data.csv']
+    filenames = [ 'session1_cycles_raw_data.csv', 'session2_cycles_raw_data.csv']
     test_identification_cross_day( filenames )
 
 
@@ -177,9 +187,8 @@ def test_identification_raw_cycles_cross( ):
 
 def test_identification_handcrafted_frames_same():
     # load CSV files
-    basefolder = 'handcrafted_features/'
-    filenames = ['zju_gaitaccel_session_0_128.csv', 'zju_gaitaccel_session_1_128.csv', 'zju_gaitaccel_session_2_128.csv']
-
+    basefolder = 'features/'
+    filenames = ['session_0_handcrafted_frames.csv', 'session_1_handcrafted_frames.csv', 'session_2_handcrafted_frames.csv']
     for i in range(len(filenames)):
         csvdata = pd.read_csv(basefolder + filenames[ i ], header=None)
         df = pd.DataFrame(csvdata)
@@ -198,9 +207,8 @@ def test_identification_handcrafted_frames_same():
 
 def test_identification_handcrafted_cycles_same():
     # load CSV files
-    basefolder = 'handcrafted_features/'
-    filenames = ['zju_gaitaccel_session_0_CYCLE.csv', 'zju_gaitaccel_session_1_CYCLE.csv', 'zju_gaitaccel_session_2_CYCLE.csv']
-
+    basefolder = 'features/'
+    filenames = ['session_0_handcrafted_cycles.csv', 'session_1_handcrafted_cycles.csv', 'session_2_handcrafted_cycles.csv']
     for i in range(len(filenames)):
         csvdata = pd.read_csv(basefolder + filenames[ i ], header=None)
         df = pd.DataFrame(csvdata)
@@ -219,14 +227,14 @@ def test_identification_handcrafted_cycles_same():
 # FRAME-based segmentation
 
 def test_identification_handcrafted_frames_cross( ):
-    filenames_frames = [ 'zju_gaitaccel_session_1_128.csv', 'zju_gaitaccel_session_2_128.csv']
+    filenames_frames = ['session_1_handcrafted_frames.csv', 'session_2_handcrafted_frames.csv']
     test_identification_cross_day( filenames_frames )
 
 # CROSS-DAY
 # CYCLE-based segmentation
 
 def test_identification_handcrafted_cycles_cross( ):
-    filenames_cycles = [ 'zju_gaitaccel_session_1_CYCLE.csv', 'zju_gaitaccel_session_2_CYCLE.csv']
+    filenames_cycles = ['session_1_handcrafted_cycles.csv', 'session_2_handcrafted_cycles.csv']
     test_identification_cross_day( filenames_cycles )
 
     
