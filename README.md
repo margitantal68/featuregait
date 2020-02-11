@@ -12,9 +12,12 @@ ICANN 2020
 
 ## Segmentation
 
-See 
+
 * FRAME-based: length = 128 samples
-* CYCLE-based: gait cycles were normalized to 128 samples
+* CYCLE-based: 
+
+    * Cycle length statistics ZJU-GaitAcc: https://github.com/margitantal68/featuregait/blob/master/statistics/ZJUGaitAccel.png
+    * Based on statistics, gait cycles were normalized to 128 samples
 
 ## Features
 RAW - use raw accelerometer 
