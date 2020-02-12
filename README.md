@@ -1,5 +1,5 @@
 # featuregait
-Feature Learning from Accelerometer Gait Data
+Feature Learning for Accelerometer based Gait Recognition
 
 Code repository of paper:
 
@@ -11,6 +11,7 @@ Code repository of paper:
    * session2 - 153 subjects
    
 * [IDNet] - http://signet.dei.unipd.it/research/human-sensing/
+  * 50 subjects with various number of sessions
 
 
 ## Segmentation
@@ -24,7 +25,7 @@ Code repository of paper:
 
 ## Features
    * RAW - use raw accelerometer data as features - 3 x 128 = 384 (ax - ay - az) 
-   * HANDCRAFTED - 59 ad-hoc statistical features (For details see: https://github.com/nemesszili/gaitgmm
+   * HANDCRAFTED - 59 ad-hoc statistical features (For details see: https://github.com/nemesszili/gaitgmm)
    * UNSUPERVISED feature extraction - autoencoders
       * DENSE autoencoder 
       * Fully Convolutional (FCN) autoencoder
