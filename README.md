@@ -42,6 +42,22 @@ Code repository of paper:
       * SAME-DAY: using data from  session 1 (train-validation-test: 60%-20%-20%)
       * CROSS-DAY: training - session 1, testing - session 2
       
-      
+## Code
+The code is divided as follows:
 
+  * The main.py python file contains the necessary code to run an experiment.
+  * The util folder contains the following:
+    * const.py - constants and enumerations 
+    * settings.py - different configurations for running an experiment
+    * manual_feature_extraction - code to exract ad-hoc manual features
+    * cycles2frames.py - normalize step cycles
+    * load_data.py - various data loading and reshaping
+    * identification.py - identifications using various features
+    * myplots.py - plots
+    * statistics.py - cycle length statistics for ZJU-GaitAcc
+  * The autoencoder folder contains the following:
+    * autoencoder_common.py - common functions used by different types of autoencoders
+    * autoencoder_dense.py - Dense (MLP) autoencoder model
+    * autoencoder_cnn.py - CNN autoencoder models (FCN, TimeCNN)
+    
 
