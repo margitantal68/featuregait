@@ -9,6 +9,7 @@ from util.identification import evaluation, CV_evaluation
 from autoencoder.autoencoder_dense import train_dense_autoencoder
 from autoencoder.autoencoder_cnn import train_1D_CNN_autoencoder, train_Time_CNN_autoencoder, train_FCN_autoencoder
 from autoencoder.autoencoder_lstm import train_LSTM_autoencoder
+
 from util.settings import MEASUREMENT_PROTOCOL_TYPE, EVALUATION_TYPE, CONVOLUTION_TYPE, EVALUATION_DATA
 from util.const import AUTOENCODER_MODEL_TYPE, RANDOM_STATE, MEASUREMENT_PROTOCOL
 from util.const import DATASET

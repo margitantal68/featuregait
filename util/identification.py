@@ -11,7 +11,7 @@ from sklearn import metrics
 
 from util.load_data import load_recordings_from_session
 from util.const import AUTOENCODER_MODEL_TYPE, RANDOM_STATE, MEASUREMENT_PROTOCOL, FeatureType
-from util.manual_feature_extraction import feature_extraction
+from util.handcraftedfeatures import feature_extraction
 from util.settings import MEASUREMENT_PROTOCOL_TYPE
 
 # 
@@ -150,7 +150,7 @@ def test_identification_raw_frames_cross(model_type, feature_type):
 def test_identification_raw_cycles_same():
     # load CSV files
     basefolder = 'features/'
-    filenames = ['session0_cycles_raw_data.csv', 'session1_cycles_raw_data.csv', 'session2_cycles_raw_data.csv']
+    filenames = ['session0_cycles_raw.csv', 'session1_cycles_raw.csv', 'session2_cycles_raw.csv']
 
     for i in range(len(filenames)):
         csvdata = pd.read_csv(basefolder + filenames[ i ], header=None)
@@ -172,7 +172,7 @@ def test_identification_raw_cycles_same():
 # CYCLE-based segmentation
 
 def test_identification_raw_cycles_cross( ):
-    filenames = [ 'session1_cycles_raw_data.csv', 'session2_cycles_raw_data.csv']
+    filenames = [ 'session1_cycles_raw.csv', 'session2_cycles_raw.csv']
     test_identification_cross_day( filenames )
 
 
@@ -188,7 +188,7 @@ def test_identification_raw_cycles_cross( ):
 def test_identification_handcrafted_frames_same():
     # load CSV files
     basefolder = 'features/'
-    filenames = ['session_0_handcrafted_frames.csv', 'session_1_handcrafted_frames.csv', 'session_2_handcrafted_frames.csv']
+    filenames = ['session0_frames_handcrafted.csv', 'session1_frames_handcrafted.csv', 'session2_frames_handcrafted.csv']
     for i in range(len(filenames)):
         csvdata = pd.read_csv(basefolder + filenames[ i ], header=None)
         df = pd.DataFrame(csvdata)
@@ -208,7 +208,7 @@ def test_identification_handcrafted_frames_same():
 def test_identification_handcrafted_cycles_same():
     # load CSV files
     basefolder = 'features/'
-    filenames = ['session_0_handcrafted_cycles.csv', 'session_1_handcrafted_cycles.csv', 'session_2_handcrafted_cycles.csv']
+    filenames = ['session0_cycles_handcrafted.csv', 'session1_cycles_handcrafted.csv', 'session2_cycles_handcrafted.csv']
     for i in range(len(filenames)):
         csvdata = pd.read_csv(basefolder + filenames[ i ], header=None)
         df = pd.DataFrame(csvdata)
@@ -227,14 +227,14 @@ def test_identification_handcrafted_cycles_same():
 # FRAME-based segmentation
 
 def test_identification_handcrafted_frames_cross( ):
-    filenames_frames = ['session_1_handcrafted_frames.csv', 'session_2_handcrafted_frames.csv']
+    filenames_frames = ['session1_frames_handcrafted.csv', 'session2_frames_handcrafted.csv']
     test_identification_cross_day( filenames_frames )
 
 # CROSS-DAY
 # CYCLE-based segmentation
 
 def test_identification_handcrafted_cycles_cross( ):
-    filenames_cycles = ['session_1_handcrafted_cycles.csv', 'session_2_handcrafted_cycles.csv']
+    filenames_cycles = ['session1_cycles_handcrafted.csv', 'session2_cycles_handcrafted.csv']
     test_identification_cross_day( filenames_cycles )
 
     

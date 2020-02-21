@@ -19,10 +19,10 @@ EVALUATION_DATA = EvaluationData.ALL
 FEATURE_TYPE = FeatureType.AUTOMATIC
 
 # What type of autoencoder to use for feature extraction
-AUTOENCODER_TYPE = AUTOENCODER_MODEL_TYPE.DENSE
+AUTOENCODER_TYPE = AUTOENCODER_MODEL_TYPE.CONV1D
 
 # Convolutional Network type
-CONVOLUTION_TYPE = ConvolutionType.TimeCNN
+CONVOLUTION_TYPE = ConvolutionType.FCN
 
 
 # If the features are already extracted using a given
@@ -42,4 +42,4 @@ IGNORE_FIRST_AND_LAST_FRAMES = True
 #  True  - data is segmented using the annotated step cycle boundaries
 #  False - data is segmented into fixed length frames of SEQUENCE_LENGTH (usually 128)
 #
-CYCLE = False
+CYCLE = True

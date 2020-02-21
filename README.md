@@ -61,3 +61,7 @@ The code is divided as follows:
     * autoencoder_cnn.py - CNN autoencoder models (FCN, TimeCNN)
     
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> b66f439b91a559e8bea4dcb39c016bdd1833f191

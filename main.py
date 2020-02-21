@@ -14,7 +14,7 @@ from util.identification import test_identification_handcrafted_frames_same, tes
 from util.identification import test_identification_handcrafted_cycles_same, test_identification_handcrafted_cycles_cross
 
 from autoencoder.autoencoder_common import  test_autoencoder,  train_autoencoder, create_idnet_training_dataset, ZJU_feature_extraction
-from autoencoder.autoencoder_common import train_test_autoencoder
+from autoencoder.autoencoder_common import train_test_autoencoder, ZJU_feature_extraction
 from util.const import MEASUREMENT_PROTOCOL
 from util.settings import CYCLE
 
@@ -29,9 +29,9 @@ def main_train_IDNET_test_ZJU( encoder_type ):
     # training
     print("TRAINING on IDNET")
     train_dataset = DATASET.IDNET
-    model_name = 'IDNET_Dense_model.h5'
+    model_name = 'IDNET_FCN_model.h5'
    
-    # train_autoencoder(train_dataset, model_name, autoencoder_type=encoder_type, update=False, augm=False, num_epochs=10)
+    train_autoencoder(train_dataset, model_name, autoencoder_type=encoder_type, update=False, augm=False, num_epochs=10)
 
     # testing
     print("TESTING on ZJU")
@@ -161,8 +161,13 @@ if __name__ == '__main__':
 
     # 4. AUTOMATIC (AUTOENCODER) features
 
-    encoder_type = AUTOENCODER_MODEL_TYPE.DENSE
+    encoder_type = AUTOENCODER_MODEL_TYPE.CONV1D
     # main_train_ZJU_test_ZJU(encoder_type)
     main_train_IDNET_test_ZJU( encoder_type)
     # main_train_IDNET_update_ZJU_test_ZJU(encoder_type)
     # train_test_autoencoder(10)
+
+    # Feature extraction
+    # encoder_name = 'Encoder_IDNET_Dense_model.h5'
+    # modeltype = AUTOENCODER_MODEL_TYPE.DENSE
+    # ZJU_feature_extraction( encoder_name, modeltype)

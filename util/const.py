@@ -72,7 +72,7 @@ class AUTOENCODER_MODEL_TYPE(Enum):
 
 
 class ConvolutionType(Enum):
-    # CNN = 0
+    CNN = 0
     FCN = 1
     TimeCNN = 2
 
