@@ -91,18 +91,6 @@ def evaluate_authentication( filename, num_users ):
     print('mean: %5.2f, std: %5.2f' % ( np.mean(auc_list), np.std(auc_list)) )
 
 
-# session 0
-# num_users = 22
-# filename = './../handcrafted_features/zju_gaitaccel_session_0_CYCLE.csv'
-
-# session 1
-# num_users = 153
-# filename = './../handcrafted_features/zju_gaitaccel_session_1_CYCLE.csv'
-
-# session 2
-# num_users = 153
-# filename = './../handcrafted_features/zju_gaitaccel_session_2_CYCLE.csv'
-
 users = [22, 153, 153]
 # RAW
 files = ['./features/session0_cycles_raw.csv', './features/session1_cycles_raw.csv', './features/session2_cycles_raw.csv']

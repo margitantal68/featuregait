@@ -42,4 +42,4 @@ IGNORE_FIRST_AND_LAST_FRAMES = True
 #  True  - data is segmented using the annotated step cycle boundaries
 #  False - data is segmented into fixed length frames of SEQUENCE_LENGTH (usually 128)
 #
-CYCLE = True
+CYCLE = False

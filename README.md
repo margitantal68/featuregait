@@ -44,24 +44,21 @@ Code repository of paper:
       
 ## Code
 The code is divided as follows:
-
+  
+  * The rawfeatures.py contains the code for creating raw features
+  * The handcrafted.py contains the code for extracting handcrafted features
   * The main.py python file contains the necessary code to run an experiment.
+
   * The util folder contains the following:
     * const.py - constants and enumerations 
-    * settings.py - different configurations for running an experiment
-    * manual_feature_extraction - code to exract ad-hoc manual features
-    * cycles2frames.py - normalize step cycles
-    * load_data.py - various data loading and reshaping
     * identification.py - identifications using various features
+    * load_data.py - various data loading and reshaping
     * myplots.py - plots
+    * settings.py - different configurations for running an experiment
     * statistics.py - cycle length statistics for ZJU-GaitAcc
+  
   * The autoencoder folder contains the following:
     * autoencoder_common.py - common functions used by different types of autoencoders
     * autoencoder_dense.py - Dense (MLP) autoencoder model
     * autoencoder_cnn.py - CNN autoencoder models (FCN, TimeCNN)
-    
-
-<<<<<<< HEAD
-
-=======
->>>>>>> b66f439b91a559e8bea4dcb39c016bdd1833f191
+ 
