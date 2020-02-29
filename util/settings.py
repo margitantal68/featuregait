@@ -22,7 +22,7 @@ FEATURE_TYPE = FeatureType.AUTOMATIC
 AUTOENCODER_TYPE = AUTOENCODER_MODEL_TYPE.CONV1D
 
 # Convolutional Network type
-CONVOLUTION_TYPE = ConvolutionType.FCN
+CONVOLUTION_TYPE = ConvolutionType.TimeCNN
 
 
 # If the features are already extracted using a given
@@ -42,4 +42,4 @@ IGNORE_FIRST_AND_LAST_FRAMES = True
 #  True  - data is segmented using the annotated step cycle boundaries
 #  False - data is segmented into fixed length frames of SEQUENCE_LENGTH (usually 128)
 #
-CYCLE = False
+CYCLE = True

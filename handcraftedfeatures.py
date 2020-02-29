@@ -2,6 +2,7 @@ import numpy as np
 from util.const import  AUTOENCODER_MODEL_TYPE, FeatureType
 from util.load_data import load_recordings_from_session
 from util.settings import CYCLE
+from util.utility import create_directory
 
 from util.const import sessions, FEAT_DIR 
 # used for 59 features: 19 + 4 * 10-bin histograms = 59
@@ -106,6 +107,9 @@ def feature_extraction(data):
 
 
 def extract_handcrafted_features( session, start_user, stop_user, output_file ):
+    # create $FEAT_DIR if does not exist
+    create_directory('./'+FEAT_DIR)
+    
     modeltype = AUTOENCODER_MODEL_TYPE.NONE
     featuretype = FeatureType.MANUAL
     X, y = load_recordings_from_session(session, start_user, stop_user, 1, 7, modeltype, featuretype)

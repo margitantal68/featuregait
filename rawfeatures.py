@@ -17,6 +17,7 @@ import csv
 
 from csv import writer
 from util.const import FEAT_DIR,  ZJU_BASE_FOLDER, G3
+from util.utility import create_directory
 
 NUM_POINTS = 128
 
@@ -41,6 +42,9 @@ def read_recording(filename):
 # (2) frame: 128 x 3
 
 def write_cycles_2_files(basepath, sessiondir, numusers, output_file):
+    # create $FEAT_DIR if does not exist
+    create_directory('./'+FEAT_DIR)
+
     csv_file = open(FEAT_DIR+'/'+output_file, mode='w+')
     path = basepath + '/' + sessiondir
     print(path)
@@ -83,6 +87,9 @@ def write_cycles_2_files(basepath, sessiondir, numusers, output_file):
     return
 
 def write_frames_2_files(basepath, sessiondir, numusers, output_file):
+    # create $FEAT_DIR if does not exist
+    create_directory('./'+FEAT_DIR)
+
     csv_file = open(FEAT_DIR+'/'+output_file, mode='w+')
     path = basepath + '/' + sessiondir
     print(path)
