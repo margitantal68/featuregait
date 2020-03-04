@@ -1,7 +1,7 @@
 # featuregait
 Feature Learning for Accelerometer based Gait Recognition
 
-Code repository of paper:
+Code repository of paper: Feature Learning for Accelerometer based Gait Recognition, submitted to ICANN 2020
 
 
 ## Used datasets
@@ -61,4 +61,9 @@ The code is divided as follows:
     * autoencoder_common.py - common functions used by different types of autoencoders
     * autoencoder_dense.py - Dense (MLP) autoencoder model
     * autoencoder_cnn.py - CNN autoencoder models (FCN, TimeCNN)
+   
+  * The notebooks folder contains two Jupyter notebooks:
+    * ZJU cycles.ipynb - end-to-end FCN and ResNet models - cycle based measurements
+    * ZJU frames.ipynb - end-to-end FCN and ResNet models - frame based measurements
+    
  
