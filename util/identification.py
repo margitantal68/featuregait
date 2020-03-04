@@ -11,7 +11,7 @@ from sklearn import metrics
 
 from util.load_data import load_recordings_from_session
 from util.const import AUTOENCODER_MODEL_TYPE, RANDOM_STATE, MEASUREMENT_PROTOCOL, FeatureType
-from util.handcraftedfeatures import feature_extraction
+from handcraftedfeatures import feature_extraction
 from util.settings import MEASUREMENT_PROTOCOL_TYPE
 
 # 

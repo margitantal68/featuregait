@@ -22,7 +22,7 @@ FEATURE_TYPE = FeatureType.AUTOMATIC
 AUTOENCODER_TYPE = AUTOENCODER_MODEL_TYPE.CONV1D
 
 # Convolutional Network type
-CONVOLUTION_TYPE = ConvolutionType.TimeCNN
+CONVOLUTION_TYPE = ConvolutionType.FCN
 
 
 # If the features are already extracted using a given

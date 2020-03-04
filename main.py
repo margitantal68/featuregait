@@ -6,13 +6,14 @@ import numpy as np
 from util.statistics import main_statistics
 from util.load_data  import load_recordings_from_session, load_IDNet_data
 from util.const import AUTOENCODER_MODEL_TYPE, FeatureType, DATASET, sessions, FEAT_DIR
-from util.manual_feature_extraction import feature_extraction
+
 
 from util.identification import test_identification_raw_frames_same, test_identification_raw_frames_cross
 from util.identification import test_identification_raw_cycles_same, test_identification_raw_cycles_cross
 from util.identification import test_identification_handcrafted_frames_same, test_identification_handcrafted_frames_cross
 from util.identification import test_identification_handcrafted_cycles_same, test_identification_handcrafted_cycles_cross
 
+from handcraftedfeatures import feature_extraction
 from autoencoder.autoencoder_common import  test_autoencoder,  train_autoencoder, create_idnet_training_dataset, ZJU_feature_extraction
 from autoencoder.autoencoder_common import train_test_autoencoder, ZJU_feature_extraction
 from util.const import MEASUREMENT_PROTOCOL
